@@ -4,6 +4,7 @@ import scheduler as sched
 
 app = Flask(__name__)
 
+
 @app.route('/date', methods=['GET'])
 def get_date():
     return jsonify({'date': 'ok'})
