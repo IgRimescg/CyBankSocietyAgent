@@ -1,6 +1,6 @@
 from flask import Flask, jsonify
-from services import aboutService
-import scheduler as sched
+from services import AboutService
+import Scheduler as sched
 
 app = Flask(__name__)
 
@@ -23,5 +23,5 @@ def get_cls():
 
 if __name__ == '__main__':
     sched.start()
-    aboutService.startAbout()
+    AboutService.startAbout()
     app.run()

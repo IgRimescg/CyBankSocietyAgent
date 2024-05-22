@@ -2,14 +2,14 @@
 import time
 from timeloop import Timeloop
 from datetime import timedelta
-from services import aboutService
+from services import AboutService
 from datetime import datetime
 
 tl = Timeloop()
 
 @tl.job(interval=timedelta(minutes=5))
 def sample_job_every_2s():
-    aboutService.updateAboutLastCheck(datetime.now())
+    AboutService.updateAboutLastCheck(datetime.now())
     print("5 minutes job current time : {}".format(time.ctime()))
     
 

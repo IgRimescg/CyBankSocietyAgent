@@ -1,8 +1,8 @@
-from repository import aboutRepository
+from repository import AboutRepository
 from datetime import datetime
 
 def startAbout():
-    aboutRepository.startAbout()
+    AboutRepository.startAbout()
     
 def updateAboutLastCheck(dateTime: datetime):
-    aboutRepository.updateAboutLastCheck(dateTime);
+    AboutRepository.updateAboutLastCheck(dateTime);

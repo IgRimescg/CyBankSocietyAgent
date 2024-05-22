@@ -1,5 +1,5 @@
 from tinydb import TinyDB, Query
-from entity import aboutEntity
+from entity import AboutEntity
 from datetime import datetime
 
 
@@ -8,7 +8,7 @@ db_search = Query()
 
 
 def startAbout():
-    about = aboutEntity.About('CyBank Society', '1.0.0')
+    about = AboutEntity.About('CyBank Society', '1.0.0')
     
     find = db.search(db_search.name == about.name)
     
