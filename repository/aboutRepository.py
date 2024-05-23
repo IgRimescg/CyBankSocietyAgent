@@ -1,9 +1,9 @@
+import os
 from tinydb import TinyDB, Query
 from entity import AboutEntity
 from datetime import datetime
 
-
-db = TinyDB("db.json")
+db = TinyDB(os.getenv("DB_NAME"))
 db_search = Query()
 
 

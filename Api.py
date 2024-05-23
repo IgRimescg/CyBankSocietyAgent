@@ -1,9 +1,14 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 from flask import Flask, jsonify
-from services import AboutService
+from services import AboutService, CognitoService
 import Scheduler as sched
 
-app = Flask(__name__)
 
+
+
+app = Flask(__name__)
 
 @app.route('/date', methods=['GET'])
 def get_date():
@@ -22,6 +27,7 @@ def get_cls():
     return jsonify({'cls': 'ok'})
 
 if __name__ == '__main__':
+    print("API MAIN: ", CognitoService.getToken())
     sched.start()
     AboutService.startAbout()
     app.run()

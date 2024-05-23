@@ -3,3 +3,4 @@ entity.__pycache__/
 repository.__pycache__/
 services.__pycache__/
 db.json
+.env
