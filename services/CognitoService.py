@@ -1,6 +1,7 @@
 import os, requests, json
 from entity import TokenCognitoEntity
 from repository import CognitoRepository
+from services import JwtDecodeService
 
 def generateToken():
     COGNITO_URL = os.getenv("COGNITO_URL")
@@ -25,10 +26,10 @@ def generateToken():
     
 def getToken():
     token = CognitoRepository.getToken()
-    if token is None:
+    if token is None or JwtDecodeService.verifyTokenExpire(token=token):
         generateToken()
-        getToken()
-        
+        getToken()    
+    
     return token
 
 def convert_to_object(object):
