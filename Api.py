@@ -2,9 +2,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from flask import Flask, jsonify
-from core import StartChecks
 from services import AboutService, CognitoService
-import Scheduler as sched
+import Scheduler as Sched
 
 
 
@@ -28,8 +27,6 @@ def get_cls():
     return jsonify({'cls': 'ok'})
 
 if __name__ == '__main__':
-    StartChecks.startCheck()
-    print("API MAIN: ", CognitoService.getToken())
-    sched.start()
     AboutService.startAbout()
+    Sched.start()
     app.run()

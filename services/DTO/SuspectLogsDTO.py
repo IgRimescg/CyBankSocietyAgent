@@ -6,6 +6,9 @@ class SuspectLogs():
     namespace: str
     ip: str
     timeCheck: datetime
+
+    def __init__(self):
+        print("init")
     
     def __init__(self, description:str, type:str, namespace: str, ip: str):
         self.description = description
