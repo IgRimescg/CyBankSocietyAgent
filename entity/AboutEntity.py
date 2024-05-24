@@ -12,4 +12,4 @@ class About():
         self.lastCheck = datetime.now()
         
     def toSave(self):
-        return {"name": self.name, "version": self.version, "lastCheck": self.lastCheck.strftime('%d/%m/%Y %H:%M:%S')};
+        return {"name": self.name, "version": self.version, "lastCheck": self.lastCheck.strftime('%d/%m/%Y %H:%M:%S')}

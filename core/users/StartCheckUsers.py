@@ -10,4 +10,4 @@ def start():
 
 def verifyUsersSuspects():
     # TODO: Implementar verificação dos users
-    return False, SuspectLogsDTO.SuspectLogs();
+    return False, SuspectLogsDTO.SuspectLogs("","","","")

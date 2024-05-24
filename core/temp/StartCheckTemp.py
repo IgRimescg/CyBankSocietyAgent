@@ -10,4 +10,4 @@ def start():
 
 def verifyTempSuspects():
     # TODO: Implementar verificação dos temp
-    return False, SuspectLogsDTO.SuspectLogs();
+    return False, SuspectLogsDTO.SuspectLogs("","","","")

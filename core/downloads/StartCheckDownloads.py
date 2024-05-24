@@ -10,4 +10,4 @@ def start():
 
 def verifyDownloadsSuspects():
     # TODO: Implementar verificação dos downloads
-    return False, SuspectLogsDTO.SuspectLogs();
+    return False, SuspectLogsDTO.SuspectLogs("","","","")

@@ -10,4 +10,4 @@ def start():
 
 def verifySharingsSuspects():
     # TODO: Implementar verificação dos sharings
-    return False, SuspectLogsDTO.SuspectLogs();
+    return False, SuspectLogsDTO.SuspectLogs("","","","")

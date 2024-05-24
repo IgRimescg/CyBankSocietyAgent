@@ -1,9 +1,9 @@
-from cronjobs import StartCheckCronjobs
-from downloads import StartCheckDownloads
-from logs import StartCheckLogs
-from sharings import StartCheckSharings
-from temp import StartCheckTemp
-from users import StartCheckUsers
+from core.cronjobs import StartCheckCronjobs
+from core.downloads import StartCheckDownloads
+from core.logs import StartCheckLogs
+from core.sharings import StartCheckSharings
+from core.temp import StartCheckTemp
+from core.users import StartCheckUsers
 
 
 def startCheck():

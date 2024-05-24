@@ -10,4 +10,4 @@ def start():
 
 def verifyCronjobSuspects():
     # TODO: Implementar verificação dos cronjobs
-    return False, SuspectLogsDTO.SuspectLogs();
+    return False, SuspectLogsDTO.SuspectLogs("","","","")
