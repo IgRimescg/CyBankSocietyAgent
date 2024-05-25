@@ -6,3 +6,6 @@ def startAbout():
     
 def updateAboutLastCheck(dateTime: datetime):
     AboutRepository.updateAboutLastCheck(dateTime);
+    
+def getAbout():
+    return AboutRepository.getAbout()

@@ -18,3 +18,10 @@ def startAbout():
 def updateAboutLastCheck(dateTime: datetime):
     db.update({"lastCheck": dateTime.strftime('%d/%m/%Y %H:%M:%S')}, db_search.name == 'CyBank Society')
     
+def getAbout():
+    name = 'CyBank Society'
+    find = db.search(db_search.name == name)
+        
+    if(len(find) > 0):
+        return find[0]
+    
