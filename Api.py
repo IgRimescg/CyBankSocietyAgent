@@ -1,6 +1,5 @@
 from dotenv import load_dotenv
 load_dotenv()
-
 from flask import Flask, jsonify
 from services import AboutService
 import Scheduler as Sched

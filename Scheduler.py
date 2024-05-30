@@ -9,7 +9,7 @@ from core import StartChecks
 tl = Timeloop()
 
 @tl.job(interval=timedelta(minutes=5))
-def sample_job_every_2s():
+def checkEvery5s():
     StartChecks.startCheck()
     AboutService.updateAboutLastCheck(datetime.now())
     print("5 minutes job current time : {}".format(time.ctime()))
