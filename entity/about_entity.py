@@ -1,6 +1,6 @@
 from datetime import datetime
 
-class About():
+class about():
     name: str
     version: str
     lastCheck: datetime
@@ -9,7 +9,7 @@ class About():
     def __init__(self, name:str, version: str):
         self.name = name
         self.version = version
-        self.lastCheck = datetime.now()
+        self.last_check = datetime.now()
         
     def toSave(self):
-        return {"name": self.name, "version": self.version, "lastCheck": self.lastCheck.strftime('%d/%m/%Y %H:%M:%S')}
+        return {"name": self.name, "version": self.version, "last_check": self.last_check.strftime('%d/%m/%Y %H:%M:%S')}

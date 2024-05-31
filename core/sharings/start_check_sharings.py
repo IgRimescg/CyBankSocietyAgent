@@ -1,5 +1,5 @@
-from services import ApiGatewayService
-from services.DTO import LogsDTO
+from services import api_gateway_service
+from services.DTO import logs_dto
 from datetime import datetime
 from enums.LogSubType import SubType
 from enums.LogType import Type
@@ -13,14 +13,14 @@ def start_sharings_check():
     try:
         suspectLog, objectSuspect = verify_sharings_suspects()
         if(suspectLog):
-            ApiGatewayService.send_logs(objectSuspect)
+            api_gateway_service.send_logs(objectSuspect)
 
         print("running check sharings:", datetime.now())
     except Exception as e:
-        ApiGatewayService.send_logs(
-            LogsDTO.Logs(str(e), Type.agentError, SubType.sharings, "", "")
+        api_gateway_service.send_logs(
+            logs_dto.Logs(str(e), Type.agentError, SubType.sharings, "", "")
         )  
 
 def verify_sharings_suspects():
     # TODO: Implementar verificação dos sharings
-    return False, LogsDTO.Logs("", Type.suspectLog , SubType.sharings, "", "")
+    return False, logs_dto.Logs("", Type.suspectLog , SubType.sharings, "", "")

@@ -1,5 +1,5 @@
-from services import ApiGatewayService
-from services.DTO import LogsDTO
+from services import api_gateway_service
+from services.DTO import logs_dto
 from datetime import datetime
 from enums.LogSubType import SubType
 from enums.LogType import Type
@@ -13,15 +13,15 @@ def start_users_check():
     try:
         suspectLog, objectSuspect = verify_users_suspects()
         if(suspectLog):
-            ApiGatewayService.send_logs(objectSuspect)
+            api_gateway_service.send_logs(objectSuspect)
 
         print("running check users: ", datetime.now())
     except Exception as e:
-        ApiGatewayService.send_logs(
-            LogsDTO.Logs(str(e), Type.agentError, SubType.users, "", "")
+        api_gateway_service.send_logs(
+            logs_dto.Logs(str(e), Type.agentError, SubType.users, "", "")
         )
 
 
 def verify_users_suspects():
     # TODO: Implementar verificação dos users
-    return False, LogsDTO.Logs("", Type.suspectLog, SubType.users, "", "")
+    return False, logs_dto.Logs("", Type.suspectLog, SubType.users, "", "")
