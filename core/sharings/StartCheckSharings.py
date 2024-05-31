@@ -6,16 +6,21 @@ from enums.LogType import Type
 import threading
 
 def start():
-    thread = threading.Thread(target=startSharingsCheck)
+    thread = threading.Thread(target=start_sharings_check)
     thread.start()
 
-def startSharingsCheck():
-    suspectLog, objectSuspect = verifySharingsSuspects()
-    if(suspectLog):
-        ApiGatewayService.sendSuspectLogs(objectSuspect)
+def start_sharings_check():
+    try:
+        suspectLog, objectSuspect = verify_sharings_suspects()
+        if(suspectLog):
+            ApiGatewayService.send_logs(objectSuspect)
 
-    print("running check sharings:", datetime.now())
+        print("running check sharings:", datetime.now())
+    except Exception as e:
+        ApiGatewayService.send_logs(
+            LogsDTO.Logs(str(e), Type.agentError, SubType.sharings, "", "")
+        )  
 
-def verifySharingsSuspects():
+def verify_sharings_suspects():
     # TODO: Implementar verificação dos sharings
     return False, LogsDTO.Logs("", Type.suspectLog , SubType.sharings, "", "")

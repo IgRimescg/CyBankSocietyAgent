@@ -6,17 +6,22 @@ from enums.LogSubType import SubType
 from enums.LogType import Type
 
 def start():
-    thread = threading.Thread(target=startCronjobCheck)
+    thread = threading.Thread(target=start_cronjob_check)
     thread.start()
     
-def startCronjobCheck():
-    suspectLog, objectSuspect = verifyCronjobSuspects()
-    if(suspectLog):
-        ApiGatewayService.sendSuspectLogs(objectSuspect)
+def start_cronjob_check():
+    try:
+        suspectLog, objectSuspect = verify_cronjob_suspects()
+        if(suspectLog):
+            ApiGatewayService.send_logs(objectSuspect)
 
-    print("running check cronjobs: ", datetime.now())
+        print("running check cronjobs: ", datetime.now())
+    except Exception as e:
+        ApiGatewayService.send_logs(
+            LogsDTO.Logs(str(e), Type.agentError, SubType.cronjob, "", "")
+        )
     
 
-def verifyCronjobSuspects():
+def verify_cronjob_suspects():
     # TODO: Implementar verificação dos cronjobs
     return False, LogsDTO.Logs("", Type.suspectLog, SubType.cronjob, "", "")

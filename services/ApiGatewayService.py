@@ -2,10 +2,10 @@ import os, requests
 from services import CognitoService
 from services.DTO import LogsDTO
 
-def sendSuspectLogs(suspectLog: LogsDTO.Logs):
+def send_logs(log: LogsDTO.Logs):
     API_GATEWAY_URL = os.getenv("API_GATEWAY_URL")
     
-    data = suspectLog.toJson()
+    data = log.toJson()
     
     headers = {'Content-type': 'application/json', 'Authorization': 'Bearer '+CognitoService.getToken()}
         
