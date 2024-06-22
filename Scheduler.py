@@ -8,7 +8,7 @@ from core import StartChecks
 
 tl = Timeloop()
 
-@tl.job(interval=timedelta(minutes=5))
+@tl.job(interval=timedelta(seconds=5))
 def checkEvery5s():
     StartChecks.startCheck()
     AboutService.updateAboutLastCheck(datetime.now())
