@@ -2,9 +2,9 @@
 import time
 from timeloop import Timeloop
 from datetime import timedelta
-from services import AboutService
+from services import about_service
 from datetime import datetime
-from core import StartChecks
+from core import start_checks
 
 tl = Timeloop()
 

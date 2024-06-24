@@ -1,9 +1,9 @@
 import os, requests, json
-from entity import TokenCognitoEntity
-from repository import CognitoRepository
-from services import JwtDecodeService
+from entity import token_cognito_entity
+from repository import cognito_repository
+from services import jwt_decode_service
 
-def generateToken():
+def generate_token():
     COGNITO_URL = os.getenv("COGNITO_URL")
     COGNITO_SCOPE = os.getenv("COGNITO_SCOPE")
     COG_CLIENT_ID = os.getenv("CLIENT_ID")
@@ -22,15 +22,15 @@ def generateToken():
     
     object = convert_to_object(response.json())
     
-    CognitoRepository.saveToken(object)
+    cognito_repository.saveToken(object)
     
-def getToken():
-    token = CognitoRepository.getToken()
-    if token is None or JwtDecodeService.verifyTokenExpire(token=token):
-        generateToken()
-        getToken()    
+def get_token():
+    token = cognito_repository.getToken()
+    if token is None or jwt_decode_service.verify_token_expire(token=token):
+        generate_token()
+        get_token()    
     
     return token
 
 def convert_to_object(object):
-    return TokenCognitoEntity.TokenCognito(object['access_token'], object['expires_in'], object['token_type'])
+    return token_cognito_entity.TokenCognito(object['access_token'], object['expires_in'], object['token_type'])

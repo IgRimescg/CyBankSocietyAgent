@@ -4,6 +4,7 @@ class SubType(Enum):
     cronjob = 'CRONJOB',
     download = 'DOWNLOAD',
     logs = 'LOGS',
-    sharings = 'SHARINGS',
+    connected_devices = 'CONNECTED_DEVICES',
     temp = 'TEMP',
-    users = 'USERS'
+    users = 'USERS',
+    files = 'FILES'
