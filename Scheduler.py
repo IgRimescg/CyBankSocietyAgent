@@ -10,8 +10,8 @@ tl = Timeloop()
 
 @tl.job(interval=timedelta(seconds=10))
 def checkEvery5s():
-    StartChecks.startCheck()
-    AboutService.updateAboutLastCheck(datetime.now())
+    start_checks.start_check()
+    about_service.update_about_last_check(datetime.now())
     print("5 minutes job current time : {}".format(time.ctime()))
     
 
