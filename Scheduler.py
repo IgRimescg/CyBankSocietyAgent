@@ -8,11 +8,11 @@ from core import start_checks
 
 tl = Timeloop()
 
-@tl.job(interval=timedelta(seconds=5))
-def check_every_5s():
-    start_checks.star_check()
+@tl.job(interval=timedelta(seconds=10))
+def checkEvery5s():
+    start_checks.start_check()
     about_service.update_about_last_check(datetime.now())
-    print("5 seconds job current time : {}".format(time.ctime()))
+    print("5 minutes job current time : {}".format(time.ctime()))
     
 
 
