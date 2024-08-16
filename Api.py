@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 load_dotenv()
 from flask import Flask, jsonify
-from services import about_service, users_service
+from services import about_service, detect_start_dispositives,  users_service
 import Scheduler as Sched
 
 
@@ -13,6 +13,7 @@ def get_about():
 
 if __name__ == '__main__':
     about_service.start_about()
+    detect_start_dispositives.setup_dispostives()
     users_service.start_users()
     Sched.start()
     app.run()
