@@ -25,7 +25,7 @@ def generate_token():
     cognito_repository.saveToken(object)
     
 def get_token():
-    token = cognito_repository.getToken()
+    token = cognito_repository.get_token()
     if token is None or jwt_decode_service.verify_token_expire(token=token):
         generate_token()
         get_token()    
@@ -33,4 +33,4 @@ def get_token():
     return token
 
 def convert_to_object(object):
-    return token_cognito_entity.TokenCognito(object['access_token'], object['expires_in'], object['token_type'])
+    return token_cognito_entity.token_cognito(object['access_token'], object['expires_in'], object['token_type'])
