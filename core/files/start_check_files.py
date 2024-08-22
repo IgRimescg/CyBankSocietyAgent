@@ -22,5 +22,22 @@ def start_files_check():
         )  
 
 def verify_files_suspects():
-    # TODO: Implementar verificação dos files
-    return False, logs_dto.Logs("", Type.suspectLog , SubType.files, "", "")
+   #pode remover/mudar/adicionar de acordo com a necessidade 
+    suspect_paths = ['/etc', '/usr/local/bin', '/Library', '~/Library', '/Users/Shared', '/private/tmp']  # paths a serem monitorados
+    suspect_file_extensions = ['.sh', '.pl']  # extensões, talvez incluir tambem .app e/ou .pkg?
+    suspect_file_mod_times = time.time() - 86400  # Arquivos modificados nos ultimos x segundos
+
+    suspect_logs = []
+    for path in suspect_paths:
+        for root, dirs, files in os.walk(path):
+            for file in files:
+                file_path = os.path.join(root, file)
+                if any(file.endswith(ext) for ext in suspect_file_extensions):
+                    if os.path.getmtime(file_path) > suspect_file_mod_times:
+                        suspect_logs.append(f"Suspicious file detected: {file_path}")
+
+    if suspect_logs:
+        log_message = "\n".join(suspect_logs)
+        return True, logs_dto.Logs(log_message, Type.suspectLog, SubType.files, "", "")
+    else:
+        return False, logs_dto.Logs("", Type.suspectLog, SubType.files, "", "")
